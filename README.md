@@ -1,3 +1,21 @@
+# DEPRECATED
+
+This repo has moved to https://github.com/gschool/react-drills
+
+```
+
+
+
+
+
+
+
+
+
+
+```
+
+
 #### [⇐ Previous](sports_ball_with_react_tools.md) | [Next ⇒](sports_ball_with_react.md)
 
 # Sports Ball
