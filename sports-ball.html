@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Practice React</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script>
+      const App = React.createClass({
+        getInitialState: function() {
+          return { where: ''}
+        },
+        handleChange: function(event) {
+          const nextWhere = event.target.value
+
+          this.setState({ where: nextWhere })
+        },
+
+        render: function() {
+          let message = 'Learn Your States & Capitols: Enter a Capitol'
+          let info
+          let states = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia', 'Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine', 'Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota', 'Ohio','Oklahoma','Oregon', 'Pennsylvania','Puerto Rico','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont', 'Virginia','Washington','West Virginia','Wisconsin','Wyoming']
+          let capitol = ['Montgomery', 'Juneau', 'Phoenix', 'Little Rock', 'Sacramento', 'Denver', 'Hartford', 'Dover', 'White House', 'Tallahassee', 'Atlanta', 'Honolulu', 'Boise', 'Springfield', 'Indianapolis', 'Des Moines', 'Topeka', 'Frankfort', 'Baton Rouge', 'Augusta', 'Annapolis', 'Boston', 'Lansing', 'St. Paul', 'Jackson', 'Jefferson City', 'Helena', 'Lincoln', 'Carson City', 'Concord', 'Trenton', 'Sante Fe', 'Albany', 'Raleigh', 'Bismark', 'Columbus', 'Pierre', 'Nashville', 'Austin', 'Salt Lake City', 'Montelier', 'Richmond', 'Olympia', 'Charleston', 'Madison', 'Cheyenne']
+          if (this.state.where.trim() === '') {
+            info = ''
+          } else if (capitol.includes(this.state.where)){
+            let index = capitol.indexOf(this.state.where)
+            info = `The capitol of ${states[index]} is ${this.state.where}`
+          } else {
+            info = `I don't know ${this.state.where}.`
+          }
+
+          return React.createElement('div', null,
+              React.createElement('h1', null, message),
+              React.createElement('p', null, info),
+              React.createElement('input', {
+                onChange: this.handleChange,
+                type: 'text',
+                value: this.state.where
+              })
+        )
+
+        }
+      })
+      ReactDOM.render(
+        React.createElement(App),
+        document.getElementById('app')
+      )
+    </script>
+  </body>
+</html>
